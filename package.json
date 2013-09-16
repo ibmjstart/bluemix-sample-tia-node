@@ -1,0 +1,21 @@
+{
+    "name":                     "bluemix-sample-tia-node",
+    "version":                  "0.1.0",
+    "engines": {
+        "node":                 "0.8.x"
+    },
+    "scripts": {
+        "start":                "node lib/cli.js"
+    },
+    "dependencies": {
+        "async":                "0.2.x",
+        "express":              "3.3.x",
+        "mongodb":              "1.3.x",
+        "underscore":           "1.5.x"
+    },
+    "devDependencies": {
+        "coffee-script":        "1.6.x",
+        "shelljs":              "0.1.x",
+        "supervisor":           "0.5.x"
+    }
+}

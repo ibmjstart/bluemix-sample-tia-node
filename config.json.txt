@@ -1,0 +1,12 @@
+# sample config.json file, note comments not allowed in actual file
+
+{
+    "twitter": {
+        "consumer_key":         "consumer key",
+        "consumer_secret":      "consumer secret"
+    },
+    
+    "klout": {
+        "developer_key":        "developer key"
+    }
+}

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd `dirname $0`
+DIR=`pwd`
+PRJ=`basename $DIR`
+
+#------------------------------------------------------------------------------
+# make the git repo accessible via:
+#     git clone http://rtpgsa.ibm.com/~pmuellr/git-repos/$PRJ/.git
+#------------------------------------------------------------------------------
+
+git update-server-info
+
+rsync \
+    --verbose \
+    --archive \
+    --exclude-from=.gitignore \
+   . \
+   rtpgsa.ibm.com:~/web/git-repos/$PRJ

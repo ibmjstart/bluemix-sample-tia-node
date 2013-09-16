@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cf push --command "node app.js" $*

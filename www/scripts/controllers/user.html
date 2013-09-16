@@ -1,0 +1,170 @@
+<!-- Copyright IBM Corp. 2013 All Rights Reserved. See footer for details. -->
+
+<h1><img width="48" height="48" ng-src="{{profileImage}}"> {{twitterSN}}</h1>
+
+<div class="row-fluid">
+    <div class="span6">
+        <table class="table">
+            <tr>
+
+                <td width="3em">
+                    <span data-toggle="tooltip" title="Klout score">
+                        <span class="badge badge-success" ng-bind="score"></span>
+                    </span>
+
+                <td width="2em">
+                    <span data-toggle="tooltip" title="Show at Twitter">
+                        <a href="http://twitter.com/{{twitterSN}}">
+                            <i class="icon-twitter icon-2x"> </i>
+                        </a>
+                    </span>
+
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+    <div class="span6">
+        <h3>influenced by</h3>
+    
+        <table class="table table-striped">
+            <tr ng-show="influencedByEmpty">
+                <td>not a soul!
+
+            <tr ng-repeat="user in influencedBy">
+                <td width="3em">
+                    <span data-toggle="tooltip" title="Klout score">
+                        <span class="badge badge-success">{{user.score}}</span>
+                    </span>
+
+                <td width="2em">
+                    <span data-toggle="tooltip" title="Analyze!">
+                        <a href="#/user/{{user.twitterSN}}">
+                            <i class="icon-search icon-2x"> </i>
+                        </a>
+                    </span>
+
+                <td width="2em">
+                    <span data-toggle="tooltip" title="Show at Twitter">
+                        <a href="http://twitter.com/{{user.twitterSN}}">
+                            <i class="icon-twitter icon-2x"> </i>
+                        </a>
+                    </span>
+
+                <td>
+                    <h4>{{user.twitterSN}}</h4>
+
+        </table>
+    </div>
+
+    <div class="span6">
+        <h3>influences</h3>
+        <table class="table table-striped">
+            <tr ng-show="influencesEmpty">
+                <td>not a soul!
+
+            <tr ng-repeat="user in influences">
+                <td width="3em">
+                    <span data-toggle="tooltip" title="Klout score">
+                        <span class="badge badge-success">{{user.score}}</span>
+                    </span>
+
+                <td width="2em">
+                    <span data-toggle="tooltip" title="Analyze!">
+                        <a href="#/user/{{user.twitterSN}}">
+                            <i class="icon-search icon-2x"> </i>
+                        </a>
+                    </span>
+
+                <td width="2em">
+                    <span data-toggle="tooltip" title="Show at Twitter">
+                        <a href="http://twitter.com/{{user.twitterSN}}">
+                            <i class="icon-twitter icon-2x"></i>
+                        </a>
+                    </span>
+
+                <td>
+                    <h4>{{user.twitterSN}}</h4>
+
+        </table>
+    </div>
+
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <h3>recent tweets</h3>
+        
+        <p ng-repeat="tweet in tweets">
+            <span data-toggle="tooltip" title="Show at Twitter">
+                <a href="https://twitter.com/{{twitterSN}}/status/{{tweet.id}}">
+                    <strong>{{tweet.date}}</strong>
+                </a> 
+            </span>
+
+            <span data-toggle="tooltip" title="Show at Google Maps">
+                <a ng-show="tweet.geoIndex" href="{{tweet.mapURL}}">
+                    <span class="label label-important">
+                        {{tweet.geoIndex}}
+                    </span>
+                </a>
+            </span>
+
+            <br>{{tweet.text}}
+        </p>
+    </div>
+
+    <div class="span6">
+        <h3 ng-show="mapURL">map</h3>
+        <img ng-show="mapURL" width="100%" ng-src="{{mapURL}}">
+    </div>
+
+<pre ng-show="dump">{{dump}}</pre>
+
+<!--
+/*===================================================================*/
+/*                                                                   */
+/* Copyright IBM Corp. 2013 All Rights Reserved                      */
+/*                                                                   */
+/*===================================================================*/
+/*                                                                   */
+/*        NOTICE TO USERS OF THE SOURCE CODE EXAMPLES                */
+/*                                                                   */
+/* The source code examples provided by IBM are only intended to     */
+/* assist in the development of a working software program.          */
+/*                                                                   */
+/* International Business Machines Corporation provides the source   */
+/* code examples, both individually and as one or more groups,       */
+/* "as is" without warranty of any kind, either expressed or         */
+/* implied, including, but not limited to the warranty of            */
+/* non-infringement and the implied warranties of merchantability    */
+/* and fitness for a particular purpose. The entire risk             */
+/* as to the quality and performance of the source code              */
+/* examples, both individually and as one or more groups, is with    */
+/* you. Should any part of the source code examples prove defective, */
+/* you (and not IBM or an authorized dealer) assume the entire cost  */
+/* of all necessary servicing, repair or correction.                 */
+/*                                                                   */
+/* IBM does not warrant that the contents of the source code         */
+/* examples, whether individually or as one or more groups, will     */
+/* meet your requirements or that the source code examples are       */
+/* error-free.                                                       */
+/*                                                                   */
+/* IBM may make improvements and/or changes in the source code       */
+/* examples at any time.                                             */
+/*                                                                   */
+/* Changes may be made periodically to the information in the        */
+/* source code examples; these changes may be reported, for the      */
+/* sample code included herein, in new editions of the examples.     */
+/*                                                                   */
+/* References in the source code examples to IBM products, programs, */
+/* or services do not imply that IBM intends to make these           */
+/* available in all countries in which IBM operates. Any reference   */
+/* to the IBM licensed program in the source code examples is not    */
+/* intended to state or imply that IBM's licensed program must be    */
+/* used. Any functionally equivalent program may be used.            */
+/*===================================================================*/
+-->
