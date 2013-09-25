@@ -9,25 +9,19 @@ twitter users.
 installation
 --------------------------------------------------------------------------------
 
-You will need [node.js](http://nodejs.org/) installed, which comes with `npm`,
-and you will also need [bower](http://bower.io/) installed.  To install `bower`
-once you've installed `node.js`, run:
-
-    sudo npm -g install bower
-
-(don't use the sudo prefix on Windows)
+You will need [node.js](http://nodejs.org/) installed (version 0.8.x or greater), 
+which comes with `npm` (version 1.1.x or greater).
 
 You will also need [MongoDB](http://www.mongodb.org/downloads) installed,
 if you want to run the server locally.
 
 Once you have that in order:
 
-* obtain the package source, unpack into new directory, cd into that directory
+* create a git clone this repository; eg,
+
+        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
 
 * run `npm install` to install node pre-req modules
-
-* run `./build.coffee vendor` to install other 3rd party files (on Windows,
-  run `build vendor`)
 
 
 configuration

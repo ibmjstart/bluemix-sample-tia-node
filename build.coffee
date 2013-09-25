@@ -9,7 +9,6 @@ main = (command) ->
     switch command
         when "serve"  then  runServe()
         when "watch"  then  runWatch()
-        when "vendor" then  runVendor()
         when "images" then  runImages()
         else                printHelp()
     return
@@ -36,50 +35,6 @@ runWatch = ->
     """
 
     return
-
-#-------------------------------------------------------------------------------
-runVendor = ->
-    rmIfExistsDir "vendor"
-    mkdir "vendor"
-
-    rmIfExistsDir "bower_components"
-
-    printSection "running `bower install [stuff]`"
-    execA runVendor3, """
-        bower install 
-            bootstrap\#2.3.x
-            angular\#1.0.x
-            font-awesome\#3.2.x
-        """
-
-#-------------------------------------------------------------------------------
-runVendor3 = (code, output) ->
-    printSection "recovering from`bower install [stuff]`"
-    console.log  "copying useful files to vendor"
-
-    cp "bower_components/jquery/jquery.js",    "vendor"
-    cp "bower_components/angular/angular.js",  "vendor"
-
-    mkdir "vendor/bootstrap"
-    mkdir "vendor/bootstrap/css"
-    mkdir "vendor/bootstrap/img"
-    mkdir "vendor/bootstrap/js"
-
-    bs = "bower_components/bootstrap/docs/assets"
-    cp "#{bs}/css/bootstrap*.css",   "vendor/bootstrap/css"
-    cp "#{bs}/img/glyphicons-*.png", "vendor/bootstrap/img"
-    cp "#{bs}/js/bootstrap.js",      "vendor/bootstrap/js"
-
-    mkdir "vendor/font-awesome"
-    mkdir "vendor/font-awesome/css"
-    mkdir "vendor/font-awesome/font"
-
-    fa = "bower_components/font-awesome"
-    cp "#{fa}/css/font-awesome-ie7.css", "vendor/font-awesome/css"
-    cp "#{fa}/css/font-awesome.css",     "vendor/font-awesome/css"
-    cp "#{fa}/font/*",                   "vendor/font-awesome/font"
-
-    rm "-R", "bower_components"
 
 #-------------------------------------------------------------------------------
 runImages = ->
@@ -136,7 +91,6 @@ printHelp = ->
         where <task> is one of:
             serve  -  run server
             watch  -  run server, restart when source changes
-            vendor -  install 3rd party files
             images -  rebuild images
             help   -  print this help
 
