@@ -93,7 +93,7 @@ The commands will be something like this:
 
     <Update manifest.yml file with App Name, Hostname and MongoDb hexdigits>        
 
-    $ cf push {unique-app-name defined in manifest.yml}
+    $ cf push
       <watch a bunch of stuff happen>
       
     Push successful! App '{unique-name}' available at http://{unique-name}.{default-domain}
