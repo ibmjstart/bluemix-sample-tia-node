@@ -1,0 +1,9 @@
+---
+applications:
+- name:                   #USER INPUT REQUIRED: Application Name.  Unique to global bluemix namespace
+  memory: 256M            #The maximum memory to allocate to each application instance
+  instances: 1            #The number of instances of the application to start
+  host:                   #USER INPUT REQUIRED: Hostname for app routing. Usually matches app name. Unique to global bluemix namespace
+  domain: ng.bluemix.net  #Bluemix Parent Domain Name
+  path: .                 #Path to the application to be pushed
+  command: node app.js    #The command to use to start the application
