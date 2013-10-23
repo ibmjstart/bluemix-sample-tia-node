@@ -8,6 +8,6 @@ applications:             #Reference http://bit.ly/N3rwqP
   path: .                 #Path to the application to be pushed
   command: node app.js    #The command to use to start the application
   services: 
-     mongodb-{hexdigits}: #USER INPUT REQUIRED:  Unique Mongodb service instance hex digits.
+     mongodb-{hexdigits}: #USER INPUT REQUIRED:  Unique Mongodb Bound Service instance hex digits.
        type: :mongodb 
        mem: 128M
