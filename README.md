@@ -91,15 +91,9 @@ The commands will be something like this:
       <select mongodb, verison >= 2.2>
       <use default name of mongodb-{hexdigits}>
 
-    $ cf push --command "node app.js" {unique-name}
-      <1 instance, 256M>
-      <use default subdomain of {unique-name}>
-      <use default domain>
-      <create services?  no>
-      <bind other services? yes>
-      <select the mongodb service you just created>
-      <save configuration: no>
+    $ cf push {unique-app-name defined in manifest.yml}
       <watch a bunch of stuff happen>
+      
     Push successful! App '{unique-name}' available at http://{unique-name}.{default-domain}
     
 Note that the app has only been tested on node 0.8.x and above.
