@@ -91,6 +91,8 @@ The commands will be something like this:
       <select mongodb, verison >= 2.2>
       <use default name of mongodb-{hexdigits}>
 
+    <Update manifest.yml file with App Name, Hostname and MongoDb hexdigits>        
+
     $ cf push {unique-app-name defined in manifest.yml}
       <watch a bunch of stuff happen>
       
