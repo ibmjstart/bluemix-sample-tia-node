@@ -37,6 +37,7 @@ Once you have that in order:
 * create a git clone this repository; eg,
 
         git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+* navigate to the cloned directory
 
 * run `npm install` to install node pre-req modules
 
