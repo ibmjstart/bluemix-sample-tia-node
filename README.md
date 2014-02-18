@@ -96,27 +96,21 @@ You should see something like this when you run:
 running on bluemix / cloud foundry
 --------------------------------------------------------------------------------
 
-You will first need to create a new mongodb service.
-The app expects that you will have only one service bound, with a name starting
-with `'mongo'`.
+To run the app on Bluemix, you will need to complete the following steps.
 
-After creating the service, push the app from this directory (after running
-the initial installation as noted above), binding to your new `mongo*` service.
+1. Login to Bluemix.
+ * `$ cf login -a https://api.ng.bluemix.net`
+2. Create an instance of the mongodb service.
+ * `$ cf create-service mongodb 100 mongodbTIA`
+3. From the cloned Twitter Influencer App directory, push the app without starting it.
+ * `$ cf push twitterIA --no-manifest --no-start`
+4. Bind the mongodb service to the new app
+ * `$ cf bind-service twitterIA mongodbTIA`
+5. Start the app
+ * `$ cf start twitterIA`
 
-The commands will be something like this:
-
-    $ cf create-service
-      <select mongodb, verison >= 2.2>
-      <use default name of mongodb-{hexdigits}>
-
-    <Update manifest.yml file with App Name, Hostname and MongoDb hexdigits>        
-
-    $ cf push
-      <watch a bunch of stuff happen>
-      
-    Push successful! App '{unique-name}' available at http://{unique-name}.{default-domain}
     
-Note that the app has only been tested on node 0.8.x and above.
+(Note: the app has only been tested on node 0.8.x and above.)
 
 That should be it!  Head over to your app's URL to start exploring!
 
