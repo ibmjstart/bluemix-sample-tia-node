@@ -58,7 +58,7 @@ To run locally, you will need a mongodb server running, at the URL:
 `bluemix-sample-tia-node` when run locally.
 
 
-running on the command-line
+running locally from the command-line
 --------------------------------------------------------------------------------
 
 use one of:
@@ -86,21 +86,43 @@ You should see something like this when you run:
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
 
 
-running on bluemix / cloud foundry
+running on bluemix from the command-line
 --------------------------------------------------------------------------------
+
+
+
 
 To run the app on Bluemix, you will need to complete the following steps.
 
 1. Login to Bluemix.
- * `$ cf login -a https://api.ng.bluemix.net`
+
+   | *usage:*   | `$ cf login [-a API_URL]`|
+   |------------|----------------------------------------------|
+   | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
+
 2. Create an instance of the mongodb service.
- * `$ cf create-service mongodb 100 mongodbTIA`
+
+   | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME`|
+   |------------|---------------------------------------------------------|
+   | *example:* | `$ cf create-service mongodb 100 mongodbTIA`            |
+
 3. From the cloned Twitter Influencer App directory, push the app without starting it.
- * `$ cf push twitterIA --no-manifest --no-start`
+
+   | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`                |
+   |------------|--------------------------------------------------------------------------|
+   | *example:* | `$ cf push <my-unique-app-name> --no-manifest --no-start -c 'node app.js`|
+
 4. Bind the mongodb service to the new app
- * `$ cf bind-service twitterIA mongodbTIA`
+
+   | *usage:*   | `$ cf bind-service APP SERVICE_INSTANCE_NAME`|
+   |------------|----------------------------------------------|
+   | *example:* | `$ cf bind-service twitterIA mongodbTIA`     |
+
 5. Start the app
- * `$ cf start twitterIA`
+
+   | *usage:*   | `$ cf start APP`                 |
+   |------------|----------------------------------|
+   | *example:* | `$ cf start <my-unique-app-name>`|
 
     
 (Note: the app has only been tested on node 0.8.x and above.)
