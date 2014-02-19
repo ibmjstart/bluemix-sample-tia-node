@@ -6,13 +6,6 @@ Twitter, Klout and Google Maps to display influence relationships between
 twitter users.
 
  This is a Node.js app that uses the following cloud services:
-
- 
-
- -   Company Text Analytics Service
-
- -   Name Text Analytics Services
-
  -   MongoDB
 
 ## License ##
