@@ -114,9 +114,9 @@ To run the app on Bluemix, you will need to complete the following steps.
 
 4. Bind the mongodb service to the new app
 
-   | *usage:*   | `$ cf bind-service APP SERVICE_INSTANCE_NAME`|
-   |------------|----------------------------------------------|
-   | *example:* | `$ cf bind-service twitterIA mongodbTIA`     |
+   | *usage:*   | `$ cf bind-service APP SERVICE_INSTANCE_NAME`      |
+   |------------|----------------------------------------------------|
+   | *example:* | `$ cf bind-service <my-unique-app-name> mongodbTIA`|
 
 5. Start the app
 
