@@ -96,7 +96,7 @@ Multiple methods exist for interacting with the BlueMix platform. Outlined below
 
 4. Next, click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the codename: BlueMix platform.
 
-  ![image](images/deploy.png)
+  ![image](images/Deploy.png)
 
   You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
 
