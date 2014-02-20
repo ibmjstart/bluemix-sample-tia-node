@@ -8,14 +8,6 @@ twitter users.
  This is a Node.js app that uses the following cloud services:
  -   MongoDB
 
-## License ##
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-
 Installation
 --------------------------------------------------------------------------------
 
@@ -35,7 +27,7 @@ Once you have that in order:
 * run `npm install` to install node pre-req modules
 
 
-configuration
+Configuration (Required)
 --------------------------------------------------------------------------------
 
 You should create a `config.json` in the root directory.  It's 
@@ -58,7 +50,7 @@ To run locally, you will need a mongodb server running, at the URL:
 `bluemix-sample-tia-node` when run locally.
 
 
-running locally from the command-line
+Running locally from the command-line
 --------------------------------------------------------------------------------
 
 use one of:
@@ -85,14 +77,44 @@ You should see something like this when you run:
     bluemix-sample-tia-node: twitter bearer token retrieved
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
 
-
-running on bluemix from the command-line
+Deploying the App
 --------------------------------------------------------------------------------
+Multiple methods exist for interacting with the BlueMix platform. Outlined below are two of those methods:
 
+1. [IBM JazzHub](#method-ibm-jazzhub)
+2. [Command-Line](#method-command-line) 
 
+### Method: IBM JazzHub ###
+1. Browse to the JazzHub project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
+2. Click on "Fork".  This will provide you with a personal copy of the code within your JazzHub project space.
 
+  ![image](images/forkProject.png)
 
-To run the app on Bluemix, you will need to complete the following steps.
+3. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
+
+  ![image](images/RenameManifest.png)
+
+4. Next, click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the codename: BlueMix platform.
+
+  ![image](images/deploy.png)
+
+  You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
+
+5. Next, click on the Root Project Name and scroll to the **Manual Deployment Information** section.
+
+  ![image](images/Manage.png)
+
+  You can check the status of the app using this section. If a green filled circle is visible, you may click the Application Name shown within the section and interact with the running application.  However, if a red filled circle is displayed, you may click **Manage** and directly interact with the BlueMix User interface for further investigation and debugging. 
+
+### Method: Command-Line ###
+#### Prerequisites ####
+
+Before we begin, we first need to install the [**cf**](https://github.com/cloudfoundry/cli/releases) command line tool that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using v6 of cf by passing it the -v flag:
+
+    cf -v
+
+#### Steps ####
+In the terminal, go to the directory of the app, and follow these steps.
 
 1. Login to Bluemix.
 
@@ -130,7 +152,7 @@ To run the app on Bluemix, you will need to complete the following steps.
 That should be it!  Head over to your app's URL to start exploring!
 
 
-running the app in the browser
+Running the App in the Browser
 --------------------------------------------------------------------------------
 
 The app consists of 4 types of pages:
@@ -176,7 +198,7 @@ For tweets which are geo-coded, a numeric badge link is displayed; click on
 that bad to display the referenced location in Google Maps.
 
 
-what the app does in the browser
+What the App Does in the Browser
 --------------------------------------------------------------------------------
 
 The web app is contructed as a single-page-app using 
@@ -198,7 +220,7 @@ Google maps are generated in the browser using the
 [Google Static Maps API](https://developers.google.com/maps/documentation/staticmaps/).
 
 
-what the app does on the server
+What the App Does on the Server
 --------------------------------------------------------------------------------
 
 The server does three basic things:
@@ -218,44 +240,9 @@ The data in the MongoDB cache is expired, over time, using
 [MongoDB's ttl expiration feature](http://docs.mongodb.org/manual/tutorial/expire-data/).
 This feature requires version MongoDB 2.2.
 
-copyright
---------------------------------------------------------------------------------
+## License ##
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-    Copyright IBM Corp. 2013 All Rights Reserved                     
-    
-    NOTICE TO USERS OF THE SOURCE CODE EXAMPLES               
-                                                                     
-    The source code examples provided by IBM are only intended to    
-    assist in the development of a working software program.         
-                                                                     
-    International Business Machines Corporation provides the source  
-    code examples, both individually and as one or more groups,      
-    "as is" without warranty of any kind, either expressed or        
-    implied, including, but not limited to the warranty of           
-    non-infringement and the implied warranties of merchantability   
-    and fitness for a particular purpose. The entire risk            
-    as to the quality and performance of the source code             
-    examples, both individually and as one or more groups, is with   
-    you. Should any part of the source code examples prove defective,
-    you (and not IBM or an authorized dealer) assume the entire cost 
-    of all necessary servicing, repair or correction.                
-                                                                     
-    IBM does not warrant that the contents of the source code        
-    examples, whether individually or as one or more groups, will    
-    meet your requirements or that the source code examples are      
-    error-free.                                                      
-                                                                     
-    IBM may make improvements and/or changes in the source code      
-    examples at any time.                                            
-                                                                     
-    Changes may be made periodically to the information in the       
-    source code examples; these changes may be reported, for the     
-    sample code included herein, in new editions of the examples.    
-                                                                     
-    References in the source code examples to IBM products, programs,
-    or services do not imply that IBM intends to make these          
-    available in all countries in which IBM operates. Any reference  
-    to the IBM licensed program in the source code examples is not   
-    intended to state or imply that IBM's licensed program must be   
-    used. Any functionally equivalent program may be used.           
-    
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
