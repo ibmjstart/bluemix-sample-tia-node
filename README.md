@@ -1,4 +1,4 @@
-bluemix-sample-tia-node - Twitter Influencer Analyzer (Node.js)
+Twitter Influencer Analyzer (Node.js)
 ================================================================================
 
 Twitter Influencer Analyzer is a web application which collects data from
