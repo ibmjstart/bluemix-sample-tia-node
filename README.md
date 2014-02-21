@@ -57,7 +57,8 @@ Once you have that in order:
 * navigate to the cloned directory
 
 * run `npm install` to install node pre-req modules
-use one of:
+
+Finally, to run the app, use one of:
 
 * `node app.js`
 * `node lib/cli.js`
@@ -80,6 +81,7 @@ You should see something like this when you run:
     bluemix-sample-tia-node: ---------------------------------------------------------------
     bluemix-sample-tia-node: twitter bearer token retrieved
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
+
 
 ### Running on IBM BlueMix ###
 In the terminal, go to the directory of your app and follow these steps:
