@@ -1,4 +1,4 @@
-bluemix-sample-tia-node - Twitter Influencer Analyzer (in node)
+bluemix-sample-tia-node - Twitter Influencer Analyzer (Node.js)
 ================================================================================
 
 Twitter Influencer Analyzer is a web application which collects data from
@@ -8,31 +8,24 @@ twitter users.
  This is a Node.js app that uses the following cloud services:
  -   MongoDB
 
-Installation
---------------------------------------------------------------------------------
+To work with the project or deploy it to the IBM Platform as as Service [Codename: BlueMix](http://www.bluemix.net), there are two main options:
 
-You will need [node.js](http://nodejs.org/) installed (version 0.8.x or greater), 
-which comes with `npm` (version 1.1.x or greater).
+1. [Command-Line](#method-command-line) 
+2. [IBM JazzHub](#method-ibm-jazzhub)
 
-You will also need [MongoDB](http://www.mongodb.org/downloads) installed,
-if you want to run the server locally.
+## Method: Command-Line ##
+### Prerequisites ###
 
-Once you have that in order:
+Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
 
-* create a git clone this repository; eg,
-
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
-* navigate to the cloned directory
-
-* run `npm install` to install node pre-req modules
+    cf -v
 
 
-Configuration (Required)
---------------------------------------------------------------------------------
+### Configuration (Required) ###
 
-You should create a `config.json` in the root directory.  It's 
-listed in `.gitignore`, so will not be stored in git.  A
-sample is available in `config.json.txt`.
+You must create a `config.json` in the root directory.  It's 
+listed in `.gitignore`, so it will not be stored in git.  A
+sample is available at `config.json.txt`.
 
 Set the Klout and Twitter keys as appropriate.
 
@@ -45,14 +38,25 @@ For Twitter, you can obtain a key and secret here:
 Note that you just need simple keys here; for neither klout nor twitter will
 the user ever "sign in" - this application only deals with public data.
 
-To run locally, you will need a mongodb server running, at the URL: 
-`mongodb://localhost:27017`.  It will use a database named 
+Now that you have finished configuring the project, you may either run it locally or skip straight to [Running on IBM BlueMix](#running-on-ibm-bluemix).
+
+### Running locally ###
+
+You will need [node.js](http://nodejs.org/) installed (version 0.8.x or greater), 
+which comes with `npm` (version 1.1.x or greater).
+
+You will also need [MongoDB](http://www.mongodb.org/downloads) installed and running at
+`mongodb://localhost:27017`.  The application will create or use a database named 
 `bluemix-sample-tia-node` when run locally.
 
+Once you have that in order:
 
-Running locally from the command-line
---------------------------------------------------------------------------------
+* create a git clone this repository; eg,
 
+        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+* navigate to the cloned directory
+
+* run `npm install` to install node pre-req modules
 use one of:
 
 * `node app.js`
@@ -77,44 +81,8 @@ You should see something like this when you run:
     bluemix-sample-tia-node: twitter bearer token retrieved
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
 
-Deploying the App
---------------------------------------------------------------------------------
-Multiple methods exist for interacting with the BlueMix platform. Outlined below are two of those methods:
-
-1. [IBM JazzHub](#method-ibm-jazzhub)
-2. [Command-Line](#method-command-line) 
-
-### Method: IBM JazzHub ###
-1. Browse to the JazzHub project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
-2. Click on "Fork".  This will provide you with a personal copy of the code within your JazzHub project space.
-
-  ![image](images/forkProject.png)
-
-3. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
-
-  ![image](images/RenameManifest.png)
-
-4. Next, click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the codename: BlueMix platform.
-
-  ![image](images/Deploy.png)
-
-  You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
-
-5. Next, click on the Root Project Name and scroll to the **Manual Deployment Information** section.
-
-  ![image](images/Manage.png)
-
-  You can check the status of the app using this section. If a green filled circle is visible, you may click the Application Name shown within the section and interact with the running application.  However, if a red filled circle is displayed, you may click **Manage** and directly interact with the BlueMix User interface for further investigation and debugging. 
-
-### Method: Command-Line ###
-#### Prerequisites ####
-
-Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using v6 of cf by passing it the -v flag:
-
-    cf -v
-
-#### Steps ####
-In the terminal, go to the directory of the app, and follow these steps.
+### Running on IBM BlueMix ###
+In the terminal, go to the directory of your app and follow these steps:
 
 1. Login to Bluemix.
 
@@ -129,10 +97,13 @@ In the terminal, go to the directory of the app, and follow these steps.
    | *example:* | `$ cf create-service mongodb 100 mongodbTIA`            |
 
 3. From the cloned Twitter Influencer App directory, push the app without starting it.
+Note that the app's name (APP) is used as the hostname of the application by default;
+therefore be sure to use something unique such as "tia-" followed by your username so that it does
+not conflict with other user apps.
 
    | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`                |
    |------------|--------------------------------------------------------------------------|
-   | *example:* | `$ cf push <my-unique-app-name> --no-manifest --no-start -c 'node app.js'`|
+   | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c 'node app.js'`|
 
 4. Bind the mongodb service to the new app
 
@@ -146,23 +117,56 @@ In the terminal, go to the directory of the app, and follow these steps.
    |------------|----------------------------------|
    | *example:* | `$ cf start <my-unique-app-name>`|
 
-    
-(Note: the app has only been tested on node 0.8.x and above.)
+That's it!  
+For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just 
+head over to your app's URL (such as http://tia-<username>.ng.bluemixn.net) to start exploring!
 
-That should be it!  Head over to your app's URL to start exploring!
+
+## Method: IBM JazzHub ##
+### Fork the Project###
+1. Browse to the JazzHub project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
+2. Click on "Fork".  This will provide you with a personal copy of the code within your JazzHub project space.
+
+  ![image](images/forkProject.png)
+
+### Configuration (Required) ###
+
+3. Rename `config.json.txt` to `config.json` and set the Twitter and Klout API keys.
+
+For Twitter, you can obtain a key and secret here:
+<https://dev.twitter.com/>
+
+For Klout, you can obtain a developer key here: 
+<http://klout.com/s/developers/home>
+
+Note that you just need simple keys here; for neither klout nor twitter will
+the user ever "sign in" - this application only deals with public data.
 
 
-Running the App in the Browser
---------------------------------------------------------------------------------
+4. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
+The manifest file is used to set the name and settings of you application when it's deployed to BlueMix.
+  ![image](images/RenameManifest.png)
 
-The app consists of 4 types of pages:
+5. Click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform.
+
+  ![image](images/Deploy.png)
+
+  You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
+
+6. Click on the Root Project Name and scroll to the **Manual Deployment Information** section.
+
+  ![image](images/Manage.png)
+
+  You can check the status of the app using this section. If a green filled circle is visible, you may click the Application Name shown within the section and interact with the running application.  However, if a red filled circle is displayed, you may click **Manage** and directly interact with the BlueMix User interface for further investigation and debugging.
+
+
+## Using the App from the Browser ##
+
+The app consists of 4 pages:
 
 * the home page, which lists all the twitter users you have explored
-
 * an individual's user page, displaying information about that user
-
 * the messages page, displaying error and informational messages
-
 * the help page, providing a legend of some of the symbols used
 
 When you run the first time, there will be no users listed on the home page.
@@ -183,11 +187,8 @@ anywhere on the web.
 The individual user page displays up to 4 things:
 
 * list of twitter users this user is influenced by
-
 * list of twitter users that are influenced by this user
-
 * recent tweets
-
 * a Google map if any tweets are geo-coded
 
 For each of the influenced by and influences users, their klout score badget,
@@ -198,8 +199,7 @@ For tweets which are geo-coded, a numeric badge link is displayed; click on
 that bad to display the referenced location in Google Maps.
 
 
-What the App Does in the Browser
---------------------------------------------------------------------------------
+### What the App Does in the Browser ###
 
 The web app is contructed as a single-page-app using 
 [AngularJS](http://angularjs.org/).  The web resources - html, css, and js files
@@ -220,15 +220,12 @@ Google maps are generated in the browser using the
 [Google Static Maps API](https://developers.google.com/maps/documentation/staticmaps/).
 
 
-What the App Does on the Server
---------------------------------------------------------------------------------
+### What the App Does on the Server ###
 
 The server does three basic things:
 
 * serves static content for the web app - html, css, and js files
-
 * serves XHR requests for klout and twitter data
-
 * persists data in a MongoDB cache
 
 XHR requests are first checked to see if there is a recent response value
