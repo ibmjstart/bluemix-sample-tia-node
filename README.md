@@ -133,14 +133,14 @@ head over to your app's URL (such as http://tia-<username>.ng.bluemixn.net) to s
 
 3. Rename `config.json.txt` to `config.json` and set the Twitter and Klout API keys.
 
-For Twitter, you can obtain a key and secret here:
-<https://dev.twitter.com/>
+ For Twitter, you can obtain a key and secret here:
+ <https://dev.twitter.com/>
 
-For Klout, you can obtain a developer key here: 
-<http://klout.com/s/developers/home>
+ For Klout, you can obtain a developer key here: 
+ <http://klout.com/s/developers/home>
 
-Note that you just need simple keys here; for neither klout nor twitter will
-the user ever "sign in" - this application only deals with public data.
+ Note that you just need simple keys here; for neither klout nor twitter will
+ the user ever "sign in" - this application only deals with public data.
 
 
 4. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
