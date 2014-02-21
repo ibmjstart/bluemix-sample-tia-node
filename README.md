@@ -146,7 +146,9 @@ head over to your app's URL (such as http://tia-<username>.ng.bluemixn.net) to s
 
 
 4. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
-The manifest file is used to set the name and settings of you application when it's deployed to BlueMix.
+
+ This file is used to pass the name and settings of you application when it's deployed to BlueMix.
+
   ![image](images/RenameManifest.png)
 
 5. Click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform.
