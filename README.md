@@ -98,10 +98,11 @@ In the terminal, go to the directory of your app and follow these steps:
    |------------|---------------------------------------------------------|
    | *example:* | `$ cf create-service mongodb 100 mongodbTIA`            |
 
-3. From the cloned Twitter Influencer App directory, push the app without starting it.
-Note that the app's name (APP) is used as the hostname of the application by default;
-therefore be sure to use something unique such as "tia-" followed by your username so that it does
-not conflict with other user apps.
+3. From the cloned Twitter Influencer App directory, push the app without starting (--no-start) so that we can bind our MongoDB service before starting it.
+
+ Pass the -c flag to specify the start command that should be used by CloudFoundry to run your app.  
+
+ Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
    | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`                |
    |------------|--------------------------------------------------------------------------|
