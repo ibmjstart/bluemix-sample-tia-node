@@ -89,40 +89,39 @@ In the terminal, go to the directory of your app and follow these steps:
 1. Login to Bluemix.
 
    | *usage:*   | `$ cf login [-a API_URL]`|
-   |------------|----------------------------------------------|
+   |:-----------|:---------------------------------------------|
    | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
 
 2. Create an instance of the mongodb service.
 
    | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME`|
-   |------------|---------------------------------------------------------|
+   |:-----------|:--------------------------------------------------------|
    | *example:* | `$ cf create-service mongodb 100 mongodbTIA`            |
 
 3. From the cloned Twitter Influencer App directory, push the app without starting (--no-start) so that we can bind our MongoDB service before starting it.
+Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
- Pass the -c flag to specify the start command that should be used by CloudFoundry to run your app.  
-
- Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
-
-   | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`                |
-   |------------|--------------------------------------------------------------------------|
+   | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`           |
+   |:-----------|:--------------------------------------------------------------------|
    | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c 'node app.js'`|
 
-4. Bind the mongodb service to the new app
+ The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
+ 
+ 
+ 
+4. Bind the MongoDB service to the new app
 
    | *usage:*   | `$ cf bind-service APP SERVICE_INSTANCE_NAME`      |
-   |------------|----------------------------------------------------|
-   | *example:* | `$ cf bind-service <my-unique-app-name> mongodbTIA`|
+   |:-----------|:---------------------------------------------------|
+   | *example:* | `$ cf bind-service tia-<username> mongodbTIA`|
 
 5. Start the app
 
    | *usage:*   | `$ cf start APP`                 |
-   |------------|----------------------------------|
-   | *example:* | `$ cf start <my-unique-app-name>`|
+   |:-----------|:---------------------------------|
+   | *example:* | `$ cf start tia-<username>`|
 
-That's it!  
-For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just 
-head over to your app's URL (such as http://tia-<username>.ng.bluemixn.net) to start exploring!
+That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.ng.bluemixn.net) to start exploring!
 
 
 ## Method: IBM JazzHub ##
