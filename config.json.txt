@@ -2,8 +2,8 @@
     "comment":                  "sample config.json file",
 
     "twitter": {
-        "consumer_key":         "consumer key",
-        "consumer_secret":      "consumer secret"
+        "consumer_key":         "API Key",
+        "consumer_secret":      "API Secret"
     },
     
     "klout": {
