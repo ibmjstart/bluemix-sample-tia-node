@@ -1,10 +1,10 @@
 ---
 applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/manifest.html
-- name: TwitterInfluenceAnalyzerNode #Application Name. Unique to the user's Space
+- name: tia_node #Application Name. Unique to the user's Space
   memory: 256M #The maximum memory to allocate to each application instance
   instances: 1 #The number of instances of the application to start
-  url: TwitterInfluenceAnalyzerNode${random-word}.${target-base} #deprecated, kept for temporary compatibility
-  host: TwitterInfluenceAnalyzerNode-${random-word} #Hostname for app routing. Unique to domain
+  url: tia-node${random-word}.${target-base} #deprecated, kept for temporary compatibility
+  host: tia-node-${random-word} #Hostname for app routing. Unique to domain
   domain: ${target-base} #Bluemix Parent Domain Name
   path: . #Path to the application to be pushed
   command: node app.js #The command to use to start the application
