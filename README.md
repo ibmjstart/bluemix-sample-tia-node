@@ -109,7 +109,7 @@ Multiple methods exist for interacting with the BlueMix platform. Outlined below
 ### Method: Command-Line ###
 #### Prerequisites ####
 
-Before we begin, we first need to install the [**cf**](https://github.com/cloudfoundry/cli/releases) command line tool that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using v6 of cf by passing it the -v flag:
+Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using v6 of cf by passing it the -v flag:
 
     cf -v
 
@@ -132,7 +132,7 @@ In the terminal, go to the directory of the app, and follow these steps.
 
    | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`                |
    |------------|--------------------------------------------------------------------------|
-   | *example:* | `$ cf push <my-unique-app-name> --no-manifest --no-start -c 'node app.js`|
+   | *example:* | `$ cf push <my-unique-app-name> --no-manifest --no-start -c 'node app.js'`|
 
 4. Bind the mongodb service to the new app
 
