@@ -103,7 +103,7 @@ Also note that the app's name (APP) is used for the hostname of the application 
 
    | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`           |
    |:-----------|:--------------------------------------------------------------------|
-   | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c 'node app.js'`|
+   | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c "node app.js"`|
 
  The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
  
