@@ -121,7 +121,7 @@ In the terminal, go to the directory of your app and follow these steps:
    |:-----------|:---------------------------------|
    | *example:* | `$ cf start tia-<username>`|
 
-That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.ng.bluemixn.net) to start exploring!
+That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.ng.bluemix.net) to start exploring!
 
 
 ## Method: IBM JazzHub ##
