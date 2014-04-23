@@ -99,13 +99,14 @@ In the terminal, go to the directory of your app and follow these steps:
    | *example:* | `$ cf create-service mongodb 100 mongodbTIA`            |
 
 3. Create a git clone of this repository ...
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
- From the cloned Twitter Influencer App directory, push the app without starting (--no-start) so that we can bind our MongoDB service before starting it.
- Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
-   | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`           |
-   |:-----------|:--------------------------------------------------------------------|
-   | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c "node app.js"`|
+        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+
+   From the cloned Twitter Influencer App directory, push the app without starting (--no-start) so that we can bind our MongoDB service before starting it. Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
+
+ | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`           |
+ |:-----------|:--------------------------------------------------------------------|
+ | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c "node app.js"`|
 
  The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
  
