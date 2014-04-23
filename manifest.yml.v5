@@ -12,5 +12,5 @@ applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/
      mongodb-tia-node: #Identifier for Mongodb Bound Service instance
       label: mongodb
       provider: core
-      version: '2.2'
-      plan: '100'
+      version: 2.2
+      plan: 100
