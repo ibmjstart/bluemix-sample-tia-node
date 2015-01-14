@@ -2,7 +2,7 @@
   "name": "bluemix-sample-tia-node",
   "version": "0.1.0",
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   },
   "scripts": {
     "start": "node lib/cli.js"
@@ -10,7 +10,7 @@
   "dependencies": {
     "async": "0.2.x",
     "express": "3.3.x",
-    "nano": "~5.10.0"
+    "nano": "5.10.0"
   },
   "devDependencies": {
     "coffee-script": "1.6.x",
