@@ -42,7 +42,7 @@ Now that you have finished configuring the project, you may either run it locall
 
 ### Running locally ###
 
-You will need [node.js](http://nodejs.org/) installed (version 0.8.x or greater),
+You will need [node.js](http://nodejs.org/) installed (version 0.10.x or greater),
 which comes with `npm` (version 1.1.x or greater).
 
 You will also need an instance of [CloudantDB](https://ace.ng.bluemix.net/) running on
@@ -148,19 +148,13 @@ That's it! For instructions on usage, please see [Using the App from the Browser
  the user ever "sign in" - this application only deals with public data.
 
 
-4. Located in the base of the project, rename **manifest.yml.v5** to **manifest.yml**
-
- This file is used to pass the name and settings of you application when it's deployed to BlueMix.
-
-  ![image](images/RenameManifest.png)
-
-5. Click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform.
+4. Click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform.
 
   ![image](images/Deploy.png)
 
   You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
 
-6. Click on the Root Project Name and scroll to the **Manual Deployment Information** section.
+5. Click on the Root Project Name and scroll to the **Manual Deployment Information** section.
 
   ![image](images/Manage.png)
 
