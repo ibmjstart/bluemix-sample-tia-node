@@ -11,7 +11,7 @@ twitter users.
 To work with the project or deploy it to the IBM Platform as as Service [Codename: BlueMix](http://www.bluemix.net), there are two main options:
 
 1. [Command-Line](#method-command-line)
-2. [IBM JazzHub](#method-ibm-jazzhub)
+2. [IBM DevOps Services](#method-ibm-DevOps-Services)
 
 ## Method: Command-Line ##
 ### Prerequisites ###
@@ -94,43 +94,33 @@ In the terminal, go to the directory of your app and follow these steps:
    |:-----------|:---------------------------------------------|
    | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
 
-2. Create an instance of the cloudantdb service.
+2. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
 
    | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME`|
    |:-----------|:--------------------------------------------------------|
-   | *example:* | `$ cf create-service cloudantnosqldb Shared cloudantTIA`            |
+   | *example:* | `$ cf create-service cloudantnosqldb Shared Cloudant-tia`|
 
 3. Create a git clone of this repository ...
 
         git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
 
-   From the cloned Twitter Influencer App directory, push the app without starting (--no-start) so that we can bind our CloudantDB service before starting it. Also note that the app's name (APP) is used for the hostname of the application by default; therefore be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
+   From the cloned Twitter Influencer App directory, simply push the app. Note that the CloudantDB service is already binded to your app via the manifest file so long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
- | *usage:*   | `$ cf push APP [--no-manifest] [--no-start] [-c COMMAND]`           |
+ | *usage:*   | `$ cf push APP [-c COMMAND]`           |
  |:-----------|:--------------------------------------------------------------------|
- | *example:* | `$ cf push tia-<username> --no-manifest --no-start -c "node app.js"`|
+ | *example:* | `$ cf push tia-<username> -c "node app.js"`|
 
  The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
 
-4. Bind the CloudantDB service to the new app
-
-   | *usage:*   | `$ cf bind-service APP SERVICE_INSTANCE_NAME`      |
-   |:-----------|:---------------------------------------------------|
-   | *example:* | `$ cf bind-service tia-<username> cloudantTIA`|
-
-5. Start the app
-
-   | *usage:*   | `$ cf start APP`                 |
-   |:-----------|:---------------------------------|
-   | *example:* | `$ cf start tia-<username>`|
 
 That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
 
 
-## Method: IBM JazzHub ##
+## Method: IBM-DevOps-Services ##
 ### Fork the Project###
-1. Browse to the JazzHub project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
-2. Click on "Fork".  This will provide you with a personal copy of the code within your JazzHub project space.
+1. Browse to the DevOps Services project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
+
+2. Click on "Fork".  This will provide you with a personal copy of the code within your DevOps Services project space.
 
   ![image](images/forkProject.png)
 
@@ -147,17 +137,20 @@ That's it! For instructions on usage, please see [Using the App from the Browser
  Note that you just need simple keys here; for neither klout nor twitter will
  the user ever "sign in" - this application only deals with public data.
  
-4. Go into the manifest.yml file and change field after name to 'tia-yourUserName'
+4. Go into the manifest.yml file and change the field after name to 'tia-yourUserName'.
 
-  Note that if this field is not unique amoung all your bluemix apps, then the app will not work.
+  Note that if this field is not unique among all your bluemix apps, the app will not work.
 
-5. Go to bluemix.net and login. From the dashboard, click add a service. Then click "View More" for the Cloudant NoSQL DB service and fill the form as follows:
+5. Go to bluemix.net and login. From the dashboard, click on add a service. Then click "View More" for the **Cloudant NoSQL DB** service and fill out the form as    follows:
 
     ![image](images/bluemixDB.png)
     
-6. Click on "Deploy" while the root directory is selected.  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform. You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
+  Note that the service name must be the same as in the image because that is the name expected within the manifest.yml file. You can change the service name if you'd 
+  like, but ONLY if you also change the corresponding name within the manifest.yml file.
+    
+6. Click on "Deploy" while the root directory is selected.  This will use information within the manifest.yml to deploy the sample application directly into the BlueMix platform. You may continue to deploy changes to your BlueMix application directly from DevOps Services using the "Deploy" and "Deploy As" buttons.
 
-7. Click on the Root Project Name and scroll to the **Manual Deployment Information** section (below the README.md which will appear to the right).
+7. Click on the Root Project Name and scroll to the **Deployment Information** section (below the README.md which will appear to the right).
 
   ![image](images/Manage.png)
 
