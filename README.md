@@ -124,7 +124,7 @@ In the terminal, go to the directory of your app and follow these steps:
    |:-----------|:---------------------------------|
    | *example:* | `$ cf start tia-<username>`|
 
-That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.ng.bluemix.net) to start exploring!
+That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
 
 
 ## Method: IBM JazzHub ##
@@ -146,19 +146,22 @@ That's it! For instructions on usage, please see [Using the App from the Browser
 
  Note that you just need simple keys here; for neither klout nor twitter will
  the user ever "sign in" - this application only deals with public data.
+ 
+4. Go into the manifest.yml file and change field after name to 'tia-yourUserName'
 
+  Note that if this field is not unique amoung all your bluemix apps, then the app will not work.
 
-4. Click on "Deploy".  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform.
+5. Go to bluemix.net and login. From the dashboard, click add a service. Then click "View More" for the Cloudant NoSQL DB service and fill the form as follows:
 
-  ![image](images/Deploy.png)
+    ![image](images/bluemixDB.png)
+    
+6. Click on "Deploy" while the root directory is selected.  This will use information within the **manifest.yml** to deploy the sample application directly into the BlueMix platform. You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
 
-  You may continue to deploy changes to your BlueMix application directly from JazzHub using the "Deploy" and "Deploy As" buttons.
-
-5. Click on the Root Project Name and scroll to the **Manual Deployment Information** section.
+7. Click on the Root Project Name and scroll to the **Manual Deployment Information** section (below the README.md which will appear to the right).
 
   ![image](images/Manage.png)
 
-  You can check the status of the app using this section. If a green filled circle is visible, you may click the Application Name shown within the section and interact with the running application.  However, if a red filled circle is displayed, you may click **Manage** and directly interact with the BlueMix User interface for further investigation and debugging.
+  You can check the status of the app using this section. If a green filled circle is visible, you may click the URL shown within the section and interact with the running application.  However, if a red filled circle is displayed, you can check the logs for errors or go to bluemix.net and diagnose the problem there.
 
 
 ## Using the App from the Browser ##
