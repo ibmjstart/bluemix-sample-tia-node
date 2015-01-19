@@ -96,22 +96,35 @@ In the terminal, go to the directory of your app and follow these steps:
 
 2. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
 
-   | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME`|
-   |:-----------|:--------------------------------------------------------|
+   | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME` |
+   |:-----------|:---------------------------------------------------------|
    | *example:* | `$ cf create-service cloudantnosqldb Shared Cloudant-tia`|
 
 3. Create a git clone of this repository ...
 
         git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
 
-   From the cloned Twitter Influencer App directory, simply push the app. Note that the CloudantDB service is already binded to your app via the manifest file so long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
+   From the cloned Twitter Influencer App directory, push the app without starting it (we need to first set the environment variables before we can run it). Note that the CloudantDB service is already binded to your app via the manifest file so long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
- | *usage:*   | `$ cf push APP [-c COMMAND]`           |
+ | *usage:*   | `$ cf push APP --no-start [-c COMMAND]`           |
  |:-----------|:--------------------------------------------------------------------|
- | *example:* | `$ cf push tia-<username> -c "node app.js"`|
+ | *example:* | `$ cf push tia-<username> --no-start -c "node app.js"`|
 
  The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
 
+4. Now we need to set the environment variables. We have three: the twitter key, twitter consumer secret, and the klout key. When we set these variables make sure to use "twitterkey", "twittersecret", and "kloutkey" as the names of these environment variables or the app will not work.
+
+ | *usage:*   | `$ cf set-env APP ENV_NAME VALUE`|
+ |:-----------|:--------------------------------------------------------|
+ | *example:* | `$ cf set-env tia-<username> twitterkey <your twitter key>`|
+ 
+ Do this three times for each environment variable: twitterkey, twittersecret, and kloutkey.
+ 
+ 5. Now we are ready to start the app!
+ 
+ | *usage:*   | `$ cf start APP`|
+ |:-----------|:--------------------------------------------------------|
+ | *example:* | `$ cf start tia-<username>`|
 
 That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
 
@@ -125,8 +138,21 @@ That's it! For instructions on usage, please see [Using the App from the Browser
   ![image](images/forkProject.png)
 
 ### Configuration (Required) ###
+ 
+3. Go into the manifest.yml file and change the field after name to 'tia-yourUserName'.
 
-3. Rename `config.json.txt` to `config.json` and set the Twitter and Klout API keys.
+  Note that if this field is not unique among all your bluemix apps, the app will not work.
+
+4. Go to bluemix.net and login. From the dashboard, click on **Add A Service**. Then click "View More" for the **Cloudant NoSQL DB** service and fill out the form as    follows:
+
+    ![image](images/bluemixDB.png)
+    
+  Note that the service name must be the same as in the image because that is the name expected within the manifest.yml file. You can change the service name if you'd 
+  like, but ONLY if you also change the corresponding name within the manifest.yml file.
+    
+5. Click on "Deploy" while the root directory is selected (MAKE SURE THE ROOT DIRECTORY IS SELECTED!). This will use the information within the manifest.yml to deploy the sample application directly into the BlueMix platform. If a dialogue box pops up, just hit "deploy". You may continue to deploy changes to your BlueMix application directly from DevOps Services using the "Deploy" and "Deploy As" buttons. Note, the application will not work just yet.
+
+6. We need to first set the Twitter and Klout API keys to their appropriate environment variables. 
 
  For Twitter, you can obtain a key and secret here:
  <https://dev.twitter.com/>
@@ -137,24 +163,15 @@ That's it! For instructions on usage, please see [Using the App from the Browser
  Note that you just need simple keys here; for neither klout nor twitter will
  the user ever "sign in" - this application only deals with public data.
  
-4. Go into the manifest.yml file and change the field after name to 'tia-yourUserName'.
+7. After you have your keys, go to back to bluemix.net, and click on your newly created application. Don't click the URL for the app, just click on the app's name. This will take you to a new screen where you should see an option for "Environment Variables" on the left. Click it and select the **USER-DEFINED** tab. From there add three new environment variables labeled EXACTLY "twitterkey", "twittersecret", and "kloutkey". Put in your respective keys like below:
 
-  Note that if this field is not unique among all your bluemix apps, the app will not work.
+  ![image](images/environmentVarSetup.png)
 
-5. Go to bluemix.net and login. From the dashboard, click on add a service. Then click "View More" for the **Cloudant NoSQL DB** service and fill out the form as    follows:
-
-    ![image](images/bluemixDB.png)
-    
-  Note that the service name must be the same as in the image because that is the name expected within the manifest.yml file. You can change the service name if you'd 
-  like, but ONLY if you also change the corresponding name within the manifest.yml file.
-    
-6. Click on "Deploy" while the root directory is selected.  This will use information within the manifest.yml to deploy the sample application directly into the BlueMix platform. You may continue to deploy changes to your BlueMix application directly from DevOps Services using the "Deploy" and "Deploy As" buttons.
-
-7. Click on the Root Project Name and scroll to the **Deployment Information** section (below the README.md which will appear to the right).
+8. After saving the keys, your app should be up and running. You can Click on the Root Project Name in DevOPs and scroll to the **Deployment Information** section (below the README.md which will appear to the right) to check the status of the app (You can also check the status on the bluemix site).
 
   ![image](images/Manage.png)
 
-  You can check the status of the app using this section. If a green filled circle is visible, you may click the URL shown within the section and interact with the running application.  However, if a red filled circle is displayed, you can check the logs for errors or go to bluemix.net and diagnose the problem there.
+  If a green filled circle is visible, you may click the URL shown within the section and interact with the running application.  However, if a red filled circle is displayed, you can check the logs for errors or go to bluemix.net and diagnose the problem there.
 
 
 ## Using the App from the Browser ##
