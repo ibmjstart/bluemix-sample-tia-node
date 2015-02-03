@@ -8,26 +8,22 @@ twitter users.
  This is a Node.js app that uses the following cloud services:
  -   Cloudant NoSQL DB
 
-To work with the project or deploy it to the IBM Platform as as Service [Codename: BlueMix](http://www.bluemix.net), there are two main options:
+Give it a try! Click the button below to fork into IBM DevOps Services and deploy your own copy of this application on Bluemix. Note the app will not yet work; you need to set the environment variables.
 
-1. [Command-Line](#method-command-line)
-2. [IBM DevOps Services](#method-ibm-DevOps-Services)
+[![Deploy to Bluemix](images/deploy-button.png)](https://hub.jazz.net/code/cfui/bluemix/deploy.html?Repository=https://github.com/ibmjstart/bluemix-sample-tia-node.git)
 
-## Method: Command-Line ##
-### Prerequisites ###
+The environment variables are your twitter and klout API keys.
 
-Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
+To set them, click on your app within Bluemix, click `Environment Variables` on the left pane, then select `USER_DEFINED` to add the three necessary environment variables. Put in your Twitter consumer key, Twitter consumer secret, and Klout key with the EXACT names shown below:
 
-    cf -v
+  ![image](images/environmentVarSetup.png)
 
+Hit save and you're done!
+___
+ 
+### Getting Twitter and Klout Keys ###
 
-### Configuration (Required) ###
-
-You must create a `config.json` in the root directory.  It's
-listed in `.gitignore`, so it will not be stored in git.  A
-sample is available at `config.json.txt`.
-
-Set the Klout and Twitter keys as appropriate.
+Get the Klout and Twitter keys as appropriate.
 
 For Klout, you can obtain a developer key here:
 <http://klout.com/s/developers/home>
@@ -35,10 +31,61 @@ For Klout, you can obtain a developer key here:
 For Twitter, you can obtain a key and secret here:
 <https://dev.twitter.com/>
 
-Note that you just need simple keys here; for neither klout nor twitter will
-the user ever "sign in" - this application only deals with public data.
+Note that you just need simple keys here. Neither Klout nor Twitter will
+ever have the user "sign in" - this application only deals with public data.
+ 
+___
 
-Now that you have finished configuring the project, you may either run it locally or skip straight to [Running on IBM BlueMix](#running-on-ibm-bluemix).
+## [Alternatively] Deploy Via the Command-Line ##
+### Prerequisites ###
+
+Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
+
+    cf -v
+
+In the terminal, go to the directory of your app and follow these steps:
+
+1. Login to Bluemix.
+
+   | *usage:*   | `$ cf login [-a API_URL]`|
+   |:-----------|:---------------------------------------------|
+   | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
+
+2. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
+
+   | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME` |
+   |:-----------|:---------------------------------------------------------|
+   | *example:* | `$ cf create-service cloudantnosqldb Shared Cloudant-tia`|
+
+3. Create a git clone of this repository ...
+
+        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+
+   From the cloned Twitter Influencer root directory, push the app ithout starting it (we need to first set the environment variables before we can run it). o long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
+
+ | *usage:*   | `$ cf push APP --no-start [-c COMMAND]`           |
+ |:-----------|:--------------------------------------------------------------------|
+ | *example:* | `$ cf push tia-<username> --no-start -c "node app.js"`|
+
+ The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
+
+4. Now we need to set the environment variables. We have three: the twitter key, twitter consumer secret, and the klout key. When we set these variables make sure to use "twitterkey", "twittersecret", and "kloutkey" as the names of these environment variables or the app will not work.
+
+ | *usage:*   | `$ cf set-env APP ENV_NAME VALUE`|
+ |:-----------|:--------------------------------------------------------|
+ | *example:* | `$ cf set-env tia-<username> twitterkey <your twitter key>`|
+ 
+ Do this three times for each environment variable: twitterkey, twittersecret, and kloutkey.
+ 
+5. Now we are ready to start the app!
+ 
+ | *usage:*   | `$ cf start APP`|
+ |:-----------|:--------------------------------------------------------|
+ | *example:* | `$ cf start tia-<username>`|
+
+That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
+
+___
 
 ### Running locally ###
 
@@ -84,95 +131,7 @@ You should see something like this when you run:
     bluemix-sample-tia-node: twitter bearer token retrieved
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
 
-
-### Running on IBM BlueMix ###
-In the terminal, go to the directory of your app and follow these steps:
-
-1. Login to Bluemix.
-
-   | *usage:*   | `$ cf login [-a API_URL]`|
-   |:-----------|:---------------------------------------------|
-   | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
-
-2. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
-
-   | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME` |
-   |:-----------|:---------------------------------------------------------|
-   | *example:* | `$ cf create-service cloudantnosqldb Shared Cloudant-tia`|
-
-3. Create a git clone of this repository ...
-
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
-
-   From the cloned Twitter Influencer App directory, push the app without starting it (we need to first set the environment variables before we can run it). Note that the CloudantDB service is already binded to your app via the manifest file so long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
-
- | *usage:*   | `$ cf push APP --no-start [-c COMMAND]`           |
- |:-----------|:--------------------------------------------------------------------|
- | *example:* | `$ cf push tia-<username> --no-start -c "node app.js"`|
-
- The -c flag is used to specify the start command that should be used by CloudFoundry when it runs your app.
-
-4. Now we need to set the environment variables. We have three: the twitter key, twitter consumer secret, and the klout key. When we set these variables make sure to use "twitterkey", "twittersecret", and "kloutkey" as the names of these environment variables or the app will not work.
-
- | *usage:*   | `$ cf set-env APP ENV_NAME VALUE`|
- |:-----------|:--------------------------------------------------------|
- | *example:* | `$ cf set-env tia-<username> twitterkey <your twitter key>`|
- 
- Do this three times for each environment variable: twitterkey, twittersecret, and kloutkey.
- 
- 5. Now we are ready to start the app!
- 
- | *usage:*   | `$ cf start APP`|
- |:-----------|:--------------------------------------------------------|
- | *example:* | `$ cf start tia-<username>`|
-
-That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
-
-
-## Method: IBM-DevOps-Services ##
-### Fork the Project###
-1. Browse to the DevOps Services project repository located [here](https://hub.jazz.net/project/jstart/Twitter%20Influence%20Analyzer%20%28Node%29/overview).  
-
-2. Click on "Fork".  This will provide you with a personal copy of the code within your DevOps Services project space.
-
-  ![image](images/forkProject.png)
-
-### Configuration (Required) ###
- 
-3. Go into the manifest.yml file and change the field after name to 'tia-yourUserName'.
-
-  Note that if this field is not unique among all your bluemix apps, the app will not work.
-
-4. Go to bluemix.net and login. From the dashboard, click on **Add A Service**. Then click "View More" for the **Cloudant NoSQL DB** service and fill out the form as    follows:
-
-    ![image](images/bluemixDB.png)
-    
-  Note that the service name must be the same as in the image because that is the name expected within the manifest.yml file. You can change the service name if you'd 
-  like, but ONLY if you also change the corresponding name within the manifest.yml file.
-    
-5. Click on "Deploy" while the root directory is selected (MAKE SURE THE ROOT DIRECTORY IS SELECTED!). This will use the information within the manifest.yml to deploy the sample application directly into the BlueMix platform. If a dialogue box pops up, just hit "deploy". You may continue to deploy changes to your BlueMix application directly from DevOps Services using the "Deploy" and "Deploy As" buttons. Note, the application will not work just yet.
-
-6. We need to first set the Twitter and Klout API keys to their appropriate environment variables. 
-
- For Twitter, you can obtain a key and secret here:
- <https://dev.twitter.com/>
-
- For Klout, you can obtain a developer key here:
- <http://klout.com/s/developers/home>
-
- Note that you just need simple keys here; for neither klout nor twitter will
- the user ever "sign in" - this application only deals with public data.
- 
-7. After you have your keys, go to back to bluemix.net, and click on your newly created application. Don't click the URL for the app, just click on the app's name. This will take you to a new screen where you should see an option for "Environment Variables" on the left. Click it and select the **USER-DEFINED** tab. From there add three new environment variables labeled EXACTLY "twitterkey", "twittersecret", and "kloutkey". Put in your respective keys like below:
-
-  ![image](images/environmentVarSetup.png)
-
-8. After saving the keys, your app should be up and running. You can Click on the Root Project Name in DevOPs and scroll to the **Deployment Information** section (below the README.md which will appear to the right) to check the status of the app (You can also check the status on the bluemix site).
-
-  ![image](images/Manage.png)
-
-  If a green filled circle is visible, you may click the URL shown within the section and interact with the running application.  However, if a red filled circle is displayed, you can check the logs for errors or go to bluemix.net and diagnose the problem there.
-
+___
 
 ## Using the App from the Browser ##
 
