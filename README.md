@@ -10,7 +10,7 @@ twitter users.
 
 Give it a try! Click the button below to fork into IBM DevOps Services and deploy your own copy of this application on Bluemix. Note the app will not yet work; you need to set the environment variables.
 
-[![Deploy to Bluemix](images/deploy-button.png)](https://hub.jazz.net/code/cfui/bluemix/deploy.html?Repository=https://github.com/ibmjstart/bluemix-sample-tia-node.git)
+[![Deploy to Bluemix](images/deploy-button.png)](https://bluemix.net/deploy?repository=https://github.com/ibmjstart/bluemix-sample-tia-node.git)
 
 The environment variables are your twitter and klout API keys.
 
