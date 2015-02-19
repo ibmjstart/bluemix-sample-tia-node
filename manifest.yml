@@ -1,7 +1,7 @@
 ---
 declared-services:
   Cloudant-tia:
-    type: cloudantNoSQLDB
+    label: cloudantNoSQLDB
     plan: Shared # required for cloudantNoSQLDB
     
 applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/manifest.html
