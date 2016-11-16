@@ -20,7 +20,7 @@ To set them, click on your app within Bluemix, click `Environment Variables` on 
 
 Hit save and you're done!
 ___
- 
+
 ### Getting Twitter and Klout Keys ###
 
 Get the Klout and Twitter keys as appropriate.
@@ -33,7 +33,7 @@ For Twitter, you can obtain a key and secret here:
 
 Note that you just need simple keys here. Neither Klout nor Twitter will
 ever have the user "sign in" - this application only deals with public data.
- 
+
 ___
 
 ## [Alternatively] Deploy Via the Command-Line ##
@@ -55,7 +55,7 @@ In the terminal, go to the directory of your app and follow these steps:
 
    | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME` |
    |:-----------|:---------------------------------------------------------|
-   | *example:* | `$ cf create-service cloudantnosqldb Shared Cloudant-tia`|
+   | *example:* | `$ cf create-service cloudantnosqldb Lite Cloudant-tia`|
 
 3. Create a git clone of this repository ...
 
@@ -74,11 +74,11 @@ In the terminal, go to the directory of your app and follow these steps:
  | *usage:*   | `$ cf set-env APP ENV_NAME VALUE`|
  |:-----------|:--------------------------------------------------------|
  | *example:* | `$ cf set-env tia-<username> twitterkey <your twitter key>`|
- 
+
  Do this three times for each environment variable: twitterkey, twittersecret, and kloutkey.
- 
+
 5. Now we are ready to start the app!
- 
+
  | *usage:*   | `$ cf start APP`|
  |:-----------|:--------------------------------------------------------|
  | *example:* | `$ cf start tia-<username>`|

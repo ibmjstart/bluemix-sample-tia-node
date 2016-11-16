@@ -2,8 +2,8 @@
 declared-services:
   Cloudant-tia:
     label: cloudantNoSQLDB
-    plan: Shared # required for cloudantNoSQLDB
-    
+    plan: Lite # required for cloudantNoSQLDB
+
 applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/manifest.html
 - name: tiaCloudant #Application Name. Unique to the user's Space
   memory: 256M #The maximum memory to allocate to each application instance
@@ -12,4 +12,3 @@ applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/
   command: node app.js #The command to use to start the application
   services:
   - Cloudant-tia
-
