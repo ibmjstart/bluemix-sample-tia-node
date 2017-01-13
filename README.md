@@ -108,7 +108,7 @@ variable to be the url from the bluemix Environment Variables.
 
 In order to do this, go to your Bluemix applications dashbaord, and click on your Cloudant service. Once there, click on the "Service Credentials" tab, 
 
-![image](images/Cloudant Screenshot.paint)
+![image](images/Cloudant.paint)
 
 Once you have that in order:
 
