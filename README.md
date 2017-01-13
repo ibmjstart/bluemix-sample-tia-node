@@ -134,6 +134,10 @@ directories, and restart the server when they change.
 
 The server will print the URL at which it's available after it's started.
 
+Before you run, you need to navigate to the project directory in CLI, and add the Twitter Key, Twitter Secret, and Klout Key as environment variables, as shown below:
+
+1. To add your Twitter API Key, run the prompt twitterkey=<your_twitter_key>
+
 You should see something like this when you run:
 
     bluemix-sample-tia-node: cloudant: url: https://736e4510-fa78-49a...bluemix.cloudant.com
