@@ -93,7 +93,6 @@ In the terminal, go to the directory of your app and follow these steps:
  | *example:* | `$ cf start tia-<username>`|
 
 That's it! For instructions on usage, please see [Using the App from the Browser](#using-the-app-from-the-browser) or just head over to your app's URL (such as http://tia-&lt;username&gt;.mybluemix.net) to start exploring!
-
 ___
 
 ### Running locally ###
@@ -106,6 +105,9 @@ You will also need an instance of [CloudantDB](https://ace.ng.bluemix.net/) runn
 from bluemix (specifically the cloudant "url") and hardcode the application to call
 the cloudant api via the url when run locally.  In cloudant.js, set the CLOUDANT_URL
 variable to be the url from the bluemix Environment Variables.
+
+In order to do this, go to your Bluemix applications dashbaord, and click on your Cloudant service. Once there, click on the "Service Credentials" tab, 
+
 
 ![image](images/EnvironmentVariables.png)
 
