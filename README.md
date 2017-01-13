@@ -150,7 +150,7 @@ Before you run, you need to navigate to the project directory in CLI, and add th
  
 Your command line should look something like this:
 
-![image](image/nodeENVs.png)
+![image](image/nodeexportss.png)
 
 Next, when you run the app using one of the prompts given above, you should see something like this when you run:
 
@@ -159,6 +159,7 @@ Next, when you run the app using one of the prompts given above, you should see 
     bluemix-sample-tia-node: twitter bearer token retrieved
     bluemix-sample-tia-node: starting server on pid 82546 at http://localhost:8000
 
+Now, enter the localhost url given to you on your browser to use the app!
 ___
 
 ## Using the App from the Browser ##
