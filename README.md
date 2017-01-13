@@ -7,36 +7,50 @@ twitter users.
 
  This is a Node.js app that uses the following cloud services:
  -   Cloudant NoSQL DB
-
-Give it a try! Click the button below to fork into IBM DevOps Services and deploy your own copy of this application on Bluemix. Note the app will not yet work; you need to set the environment variables.
+ 
+Give it a try! Click the button below to fork into IBM DevOps Services and deploy your own copy of this application on Bluemix. Note the app will not yet work; you need to set the environment variables (discussed below).
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/ibmjstart/bluemix-sample-tia-node.git)
 
-The environment variables are your twitter and klout API keys.
+### Getting Your Environment Variables (Twitter and Klout API Keys) ###
 
-To set them, click on your app within Bluemix, click `Environment Variables` on the left pane, then select `USER_DEFINED` to add the three necessary environment variables. Put in your Twitter consumer key, Twitter consumer secret, and Klout key with the EXACT names shown below:
+Before you set up your environment variables, you will need to find your callback URL, which is just the URL the app will be running on:
+
+1. Once you click on the "Deploy to Bluemix" button above, you will be taken to a page and will either need to log in or create a Bluemix account.
+
+2. Once you have signed in, click on the blue "Deploy" button on the bottom right corner, and wait for it to finish creating and configuring your application. Again, your app will not yet be successfully deployed as your environment variables are not set up yet. Your screen should look like this:
+
+
+
+
+
+
+3. Go to www.bluemix.net, and use the hamburger menu at the top right hand corner to to go to your Application Dashboard. Find our application (it should have the prefix "bluemix-sample-tia-node" followed by your username and a unique number sequence.
+
+4. Copy the application's Route URL and save it to your clipboard. 
+
+Before you can get your app running, you need to get Twitter and Klout API keys and set up your environment variables on Bluemix. 
+
+5. To get your Twitter API Keys, go here: 
+<https://apps.twitter.com> 
+
+6. Sign into your twitter account, click on "create new app", and fill out the form. For the callback URL, enter your Bluemix app's route URL you copied to your clipboard earlier. 
+
+7. Once you have generated your Twitter app, navigate to Keys and Access Tokens, locate your Consumer Key and Consumer Secret. We will come back to this later.
+
+8. Next, we will be generating our Klout API Keys. Go to <http://klout.com/s/developers/home>, and similar to what we did for the Twitter API, create a new app, fill out the form, and enter your Bluemix app's route URL for the callback URL section on the Klout API form. 
+
+9. Once you have your Klout API keys generated, go back to www.bluemix.net, find your app on your Dashboard, click on it, and use the left panel to navigate to "Runtime". 
+
+10. Once you're in the Runtime section, click on "Environment Variables", and add your Twitter and Klout API keys as shown below: (make sure the environemnt variable names match EXACTLY what is shown below, as in your Twitter API key should be named "twitterkey", your Twitter Consumer Secret "twittersecret", and your Klout Key "kloutkey")
+
 
   ![image](images/environmentVarSetup.png)
 
-Hit save and you're done!
-___
+Hit save and you're done! Your app is now live! In order to access it, go back to to the dashboard, and click on your app's Route URL. 
 
-### Getting Twitter and Klout Keys ###
+### Alternatively, Deploy Your App Via Command Line (CLI) ###
 
-Get the Klout and Twitter keys as appropriate.
-
-For Klout, you can obtain a developer key here:
-<http://klout.com/s/developers/home>
-
-For Twitter, you can obtain a key and secret here:
-<https://dev.twitter.com/>
-
-Note that you just need simple keys here. Neither Klout nor Twitter will
-ever have the user "sign in" - this application only deals with public data.
-
-___
-
-## [Alternatively] Deploy Via the Command-Line ##
 ### Prerequisites ###
 
 Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
