@@ -150,7 +150,7 @@ Before you run, you need to navigate to the project directory in CLI, and add th
  
 Your command line should look something like this:
 
-![image](image/nodeexportss.png)
+![image](images/nodeexports.png)
 
 Next, when you run the app using one of the prompts given above, you should see something like this when you run:
 
