@@ -56,7 +56,8 @@ Before we begin, we first need to install the [**Bluemix Command Line Tool**] (h
 In the terminal, go to the directory of your app and follow these steps:
 
 1. Create a git clone of this repository.
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+    
+    git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
 
 2. Login to Bluemix.
 
@@ -113,8 +114,7 @@ In order to do this, go to your Bluemix applications dashbaord, and click on you
 Once you have that in order:
 
 * create a git clone this repository; eg,
-
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+     git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
 * navigate to the cloned directory
 
 * run `npm install` to install node pre-req modules
@@ -136,9 +136,23 @@ The server will print the URL at which it's available after it's started.
 
 Before you run, you need to navigate to the project directory in CLI, and add the Twitter Key, Twitter Secret, and Klout Key as environment variables, as shown below:
 
-1. To add your Twitter API Key, run the prompt twitterkey=<your_twitter_key>
+1. To add your Twitter API Key, run the prompt: 
+ 
+ export twitterkey=your_twitter_key
 
-You should see something like this when you run:
+2. To add your Twitter API Secrety, run the prompt:
+
+ export twittersecret=your_twitter_secret
+ 
+3. To add your Klout API Key, run the prompt:
+
+ export koutkey=your_klout_key
+ 
+Your command line should look something like this:
+
+![image](image/nodeENVs.png)
+
+Next, when you run the app using one of the prompts given above, you should see something like this when you run:
 
     bluemix-sample-tia-node: cloudant: url: https://736e4510-fa78-49a...bluemix.cloudant.com
     bluemix-sample-tia-node: ---------------------------------------------------------------
