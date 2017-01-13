@@ -106,9 +106,9 @@ from bluemix (specifically the cloudant "url") and hardcode the application to c
 the cloudant api via the url when run locally.  In cloudant.js, set the CLOUDANT_URL
 variable to be the url from the bluemix Environment Variables.
 
-In order to do this, go to your Bluemix applications dashbaord, and click on your Cloudant service. Once there, click on the "Service Credentials" tab, 
+In order to do this, go to your Bluemix applications dashbaord, and click on your Cloudant service. Once there, click on the "Service Credentials" tab, create a new credential, and copy the URL string displayed to you. 
 
-![image](images/Cloudant.paint)
+![image](images/Cloudant.png)
 
 Once you have that in order:
 
