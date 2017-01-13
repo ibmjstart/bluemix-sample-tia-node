@@ -49,29 +49,28 @@ Hit save and you're done! Your app is now live! In order to access it, go back t
 
 ### Prerequisites ###
 
-Before we begin, we first need to install the [**cf command line tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
+Before we begin, we first need to install the [**Bluemix Command Line Tool**] (http://clis.ng.bluemix.net/ui/home.html) as well as the [**CF Command Line Tool**](https://github.com/cloudfoundry/cli/releases) that will be used to upload and manage your application. If you've previously installed an older version of the cf tool, make sure you are now using cf v6 by passing it the -v flag:
 
     cf -v
 
 In the terminal, go to the directory of your app and follow these steps:
 
-1. Login to Bluemix.
+1. Create a git clone of this repository.
+        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
+
+2. Login to Bluemix.
 
    | *usage:*   | `$ cf login [-a API_URL]`|
    |:-----------|:---------------------------------------------|
    | *example:* | `$ cf login -a https://api.ng.bluemix.net`   |
 
-2. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
+3. Create an instance of the cloudantdb service. Be sure to make the service instance name exactly "Cloudant-tia" as that's required by the manifest.yml file.
 
    | *usage:*   | `$ cf create-service SERVICE PLAN SERVICE_INSTANCE_NAME` |
    |:-----------|:---------------------------------------------------------|
    | *example:* | `$ cf create-service cloudantnosqldb Lite Cloudant-tia`|
 
-3. Create a git clone of this repository ...
-
-        git clone https://github.com/ibmjstart/bluemix-sample-tia-node.git
-
-   From the cloned Twitter Influencer root directory, push the app ithout starting it (we need to first set the environment variables before we can run it). o long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
+   From the cloned Twitter Influencer root directory, push the app without starting it (we need to first set the environment variables before we can run it). o long as you used Cloudant-tia for your database name. Also note that the app's name (APP) is used for the hostname of the application by default; therefore, be sure to use something unique such as "tia-" followed by your username so that it does not conflict with other user apps.
 
  | *usage:*   | `$ cf push APP --no-start [-c COMMAND]`           |
  |:-----------|:--------------------------------------------------------------------|
