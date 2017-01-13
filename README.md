@@ -20,16 +20,13 @@ Before you set up your environment variables, you will need to find your callbac
 
 2. Once you have signed in, click on the blue "Deploy" button on the bottom right corner, and wait for it to finish creating and configuring your application. Again, your app will not yet be successfully deployed as your environment variables are not set up yet. Your screen should look like this:
 
-
-
-
-
+ ![image](images/App Deploy.png)
 
 3. Go to www.bluemix.net, and use the hamburger menu at the top right hand corner to to go to your Application Dashboard. Find our application (it should have the prefix "bluemix-sample-tia-node" followed by your username and a unique number sequence.
 
 4. Copy the application's Route URL and save it to your clipboard. 
 
-Before you can get your app running, you need to get Twitter and Klout API keys and set up your environment variables on Bluemix. 
+Before you can get your app running, you need to get Twitter and Klout API keys and set up your environment variables on B Bluemix. 
 
 5. To get your Twitter API Keys, go here: 
 <https://apps.twitter.com> 
@@ -44,8 +41,7 @@ Before you can get your app running, you need to get Twitter and Klout API keys 
 
 10. Once you're in the Runtime section, click on "Environment Variables", and add your Twitter and Klout API keys as shown below: (make sure the environemnt variable names match EXACTLY what is shown below, as in your Twitter API key should be named "twitterkey", your Twitter Consumer Secret "twittersecret", and your Klout Key "kloutkey")
 
-
-  ![image](images/environmentVarSetup.png)
+![image](images/Environment Variables.png)
 
 Hit save and you're done! Your app is now live! In order to access it, go back to to the dashboard, and click on your app's Route URL. 
 
